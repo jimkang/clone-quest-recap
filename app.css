@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'goudy-bookletter';
+  src: url('Goudy_Bookletter_1911/GoudyBookletter1911-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'vast-shadow';
+  src: url('Vast_Shadow/VastShadow-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-size: 24px;
+  font-family: goudy-bookletter, Georgia, serif;
+  background: #fff;
+  color: hsl(0, 30%, 20%);
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+button {
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border-width: 8px;
+  border-color: #333;
+  border-style: solid;
+  background-color: #fff;
+  min-width: 44px;
+}
+
+.outer-container {
+  display: flex;
+}
+
+a:link {
+  color: #222;
+  font-weight: 700;
+}
+
+a:visited {
+  color: #ddd;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 1s;
+  display: none;
+}
+
+svg {
+}
+
+.area .title {
+  font-family: vast-shadow;
+  font-weight: 1000;
+  font-size: 72px;
+}
+
+
+.area .small-title {
+  font-family: vast-shadow;
+  font-weight: 1000;
+  font-size: 36px;
+}
+
+.area rect {
+  fill: #b2873d;
+}
+
+.character circle {
+  fill: white;
+  stroke: #362a03;
+}
+
+foreignObject div {
+  /* border: 2px solid purple; */
+  display: flex;
+  flex-direction: column;
+  align: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+}
+
+@media all and (max-height: 568px) {
+  body {
+    font-size: 18px;
+  }
+}
