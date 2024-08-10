@@ -58,6 +58,7 @@ a:visited {
 svg {
 }
 
+
 .area .title {
   font-family: vast-shadow;
   font-weight: 1000;
@@ -73,6 +74,8 @@ svg {
 
 .area rect {
   fill: #b2873d;
+  stroke-width: 2;
+  stroke: #362a03;
 }
 
 .character circle {
