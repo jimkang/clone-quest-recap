@@ -9,4 +9,5 @@ function onNextClick() {
   document.body.classList.remove(`stage-${stage}`);
   stage += 1;
   document.body.classList.add(`stage-${stage}`);
+
 }
