@@ -71,16 +71,19 @@ a:visited {
   height: 100%;
 }
 
-.stage-1 #intro {
+body:not(.stage-0) #intro {
   visibility: hidden;
   opacity: 0;
   transition: 1s ease-out opacity,
     1s visibility allow-discrete;
 }
 
-svg {
+body:not(.stage-2) #voted-off {
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s ease-out opacity,
+    1s visibility allow-discrete;
 }
-
 
 .area .title {
   font-family: vast-shadow;
