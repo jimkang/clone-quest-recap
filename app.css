@@ -88,7 +88,18 @@ body:not(.stage-2) #voted-off {
     1s visibility allow-discrete;
 }
 
-body:not(.stage-4) #pods {
+#ballot img {
+  height: 600px;
+}
+
+body:not(.stage-3) #ballot {
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s ease-out opacity,
+    1s visibility allow-discrete;
+}
+
+body:not(.stage-5) #pods {
   visibility: hidden;
   opacity: 0;
   transition: 1s ease-out opacity,

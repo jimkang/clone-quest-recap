@@ -18,7 +18,7 @@ var positionsForStages = {
     'ken': '600, 350',
     'ken-clone': '490, 800'
   },
-  '3': {
+  '4': {
     'mj': '50, 75',
     'mj-clone': '300, 250',
     'awnzo1-clone': '50, 350',
@@ -32,7 +32,7 @@ var positionsForStages = {
     'omom-clone': '950, 625',
     'beffa-clone': '50, 625',
   },
-  '5': {
+  '6': {
     'mj-clone': '50, 75',
     'mj': '300, 250',
     'awnzo1-clone': '50, 350',
@@ -59,7 +59,7 @@ function onNextClick() {
   stage += 1;
   document.body.classList.add(`stage-${stage}`);
 
-  if (stage === 3 || stage === 5) {
+  if (stage === 4 || stage === 6) {
     animateShuffle(stage);
   }
 }
