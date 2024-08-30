@@ -17,18 +17,6 @@ var positionsForStages = {
     'beffa-clone': 'translate(75, 675)',
   },
   '3': {
-    // 'mj': 'translate(50, 75)',
-    // 'mj-clone': 'translate(300, 250)',
-    // 'awnzo1-clone': 'translate(50, 350)',
-    // 'awnzo1': 'translate(500, 225)',
-    // 'beffa': 'translate(700, 225)',
-    // 'eunice': 'translate(950, 75)',
-    // 'eunice-clone': 'translate(300, 450)',
-    // 'nettie': 'translate(950, 350)',
-    // 'nettie-clone': 'translate(500, 450)',
-    // 'omom': 'translate(700, 450)',
-    // 'omom-clone': 'translate(950, 625)',
-    // 'beffa-clone': 'translate(50, 625)',
     'mj': '50, 75',
     'mj-clone': '300, 250',
     'awnzo1-clone': '50, 350',
@@ -41,7 +29,22 @@ var positionsForStages = {
     'omom': '700, 450',
     'omom-clone': '950, 625',
     'beffa-clone': '50, 625',
-  }
+  },
+  '5': {
+    'mj-clone': '50, 75',
+    'mj': '300, 250',
+    'awnzo1-clone': '50, 350',
+    'awnzo1': '500, 225',
+    'beffa': '700, 225',
+    'eunice': '950, 75',
+    'eunice-clone': '300, 450',
+    'nettie': '950, 350',
+    'nettie-clone': '500, 450',
+    'omom-clone': '700, 450',
+    'omom': '950, 625',
+    'beffa-clone': '50, 625',
+    // 'ken': 
+  },
 };
 
 ((function go() {
@@ -53,8 +56,8 @@ function onNextClick() {
   stage += 1;
   document.body.classList.add(`stage-${stage}`);
 
-  if (stage === 3) {
-    animateShuffle(3);
+  if (stage === 3 || stage === 5) {
+    animateShuffle(stage);
   }
 }
 
@@ -68,9 +71,9 @@ function animateShuffle(stage) {
     animateNode.setAttribute('type', 'translate');
     animateNode.setAttribute('from', group.getAttribute('transform').replace('translate(', '').replace(')', ''));
     animateNode.setAttribute('to', `${transformsById[id]}`);
-    animateNode.setAttribute('begin', '3s');
-    animateNode.setAttribute('dur', '10s');
+    animateNode.setAttribute('dur', '5s');
     animateNode.setAttribute('fill', 'freeze');
     group.append(animateNode);
+    animateNode.beginElement();
   }
 }

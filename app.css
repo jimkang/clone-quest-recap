@@ -18,6 +18,9 @@ body {
   color: hsl(0, 30%, 20%);
   margin: 0;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .invisible {
@@ -26,7 +29,7 @@ body {
 
 button {
   font-family: 'goudy-bookletter';
-  font-size: 1.2em;
+  font-size: 2.5em;
   cursor: pointer;
   padding: 0.25em;
   border-radius: 0.25em;
@@ -35,6 +38,7 @@ button {
   border-style: solid;
   background-color: #fff;
   min-width: 44px;
+  margin-right: 46px;
 }
 
 .outer-container {
@@ -58,7 +62,6 @@ a:visited {
 
 .presentation {
   width: 100vw;
-  height: 80vh;
   position: relative;
 }
 
@@ -79,6 +82,13 @@ body:not(.stage-0) #intro {
 }
 
 body:not(.stage-2) #voted-off {
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s ease-out opacity,
+    1s visibility allow-discrete;
+}
+
+body:not(.stage-4) #pods {
   visibility: hidden;
   opacity: 0;
   transition: 1s ease-out opacity,
