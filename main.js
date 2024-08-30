@@ -15,6 +15,8 @@ var positionsForStages = {
     'omom-clone': 'translate(975, 675)',
     'awnzo1': 'translate(75, 400)',
     'beffa-clone': 'translate(75, 675)',
+    'ken': '600, 350',
+    'ken-clone': '490, 800'
   },
   '3': {
     'mj': '50, 75',
@@ -43,7 +45,8 @@ var positionsForStages = {
     'omom-clone': '700, 450',
     'omom': '950, 625',
     'beffa-clone': '50, 625',
-    // 'ken': 
+    'ken': '490, 800',
+    'ken-clone': '600, 350'
   },
 };
 
