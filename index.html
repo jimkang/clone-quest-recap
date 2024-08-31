@@ -13,22 +13,67 @@
 
     <div class="presentation">
       <div id="intro" class="full-frame-caption">
-        The start: The originals and clones are distributed
+        <div>
+          <p>At the start of Quest 2, the Worst Party breaks out of glass cages in the arena, cross pillars rising out of an acid pool, and defeat umber hulks and eyewings.</p><p>But some of the party members are clones.</p>
+        </div>
       </div>
 
       <div id="voted-off" class="full-frame-caption">
-        The party votes guys off.
+        <div>
+          Meanwhile, the other versions of the party watch from lounges. Some of the watchers are clones, and some are original members of the party. Regardless, they receive ballots and vote for those in the area that they are clones, based on their careful observation.
+        </div>
       </div>
 
       <div id="ballot" class="full-frame-caption">
+        <p>Most vote, but some abstain.</p>
         <img src="beffa-ballot.png" alt="Beffa's ballot">
+      </div>
+      <div id="tally" class="full-frame-caption">
+        <p>The arena players voted likely to be clones are Eunice, Awnzo, Nettie, and Ken. And so, their lounge versions are swapped with their arena versions.</p>
+        <table>
+          <tr>
+            <td>Candidate</td><td>Votes</td>
+          </tr>
+          <tr>
+            <td>Eunice</td><td>5</td>
+          </tr>
+          <tr>
+            <td>Awnzo 1</td><td>3</td>
+          </tr>
+          <tr>
+            <td>Nettie</td><td>3</td>
+          </tr>
+          <tr>
+            <td>Chycken Tiberius IV</td><td>1</td>
+          </tr>
+        </table>
       </div>
 
       <div id="pods" class="full-frame-caption">
-        The Makalbly, Omom, and Ken in the arena enter the pods to swap with their other selves.
+        <p>They defeat demons, a big spider, and a slippery slope. Then, the arena party reach large, person-sized pods. Time is running out on the violent expiration of the clones.</p>
+        <p>The Makalbly, Awnzo, Omom, and Ken in the arena enter the pods to swap with their other selves.</p>
       </div>
 
+      <div id="time-out" class="full-frame-caption">
+        <p>The arena party separates and embeds themselves in secret underground chambers. Time finally runs out.</p>
+        <p>The clones explode!</p>
+      </div>
+      <!-- baseFrequency=0.01 gets you some kinda liquid. -->
       <svg id="board" width="1200" height="1000">
+        <filter id="displacementFilter">
+          <feTurbulence
+            type="turbulence"
+            baseFrequency="0.05"
+            numOctaves="4"
+            result="turbulence" />
+          <feDisplacementMap
+            in2="turbulence"
+            in="SourceGraphic"
+            scale="50"
+            xChannelSelector="G"
+            yChannelSelector="R" />
+        </filter>
+
         <g class="area" transform="translate(275, 0)">
           <rect width="600" height="700"></rect>
 
@@ -81,13 +126,23 @@
 
 
         <g id="characters">
-          <g id="mj-clone" class="character" transform="translate(300, 250)">
+          <g id="mj-clone" class="character clone" transform="translate(300, 250)">
             <circle r="75" cx="75" cy="75"></circle>
             <foreignObject x="12.5" y="18" width="125" height="125"><div>Makalbly Jane clone</div></foreignObject>
+            <g class="explosion-container">
+              <g class="explosion">
+                <circle r="75" cx="75" cy="75"></circle>
+              </g>
+            </g>
           </g>
-          <g id="awnzo1-clone" class="character" transform="translate(500, 250)">
+          <g id="awnzo1-clone" class="character clone" transform="translate(500, 250)">
             <circle r="75" cx="75" cy="75"></circle>
             <foreignObject x="12.5" y="12.5" width="125" height="125"><div>Awnzo 1 clone</div></foreignObject>
+            <g class="explosion-container">
+              <g class="explosion">
+                <circle r="75" cx="75" cy="75"></circle>
+              </g>
+            </g>
           </g>
           <g id="beffa" class="character" transform="translate(700, 250)">
             <circle r="75" cx="75" cy="75"></circle>
@@ -114,31 +169,55 @@
             <foreignObject x="12.5" y="12.5" width="125" height="125"><div>Ken</div></foreignObject>
           </g>
 
-          <g id="nettie-clone" class="character" transform="translate(950, 350)">
+          <g id="nettie-clone" class="character clone" transform="translate(950, 350)">
             <circle r="75" cx="75" cy="75"></circle>
             <foreignObject x="12.5" y="18" width="125" height="125"><div>Nettie clone</div></foreignObject>
+            <g class="explosion-container">
+              <g class="explosion">
+                <circle r="75" cx="75" cy="75"></circle>
+              </g>
+            </g>
           </g>
-          <g id="eunice-clone" class="character" transform="translate(950, 75)">
+          <g id="eunice-clone" class="character clone" transform="translate(950, 75)">
             <circle r="75" cx="75" cy="75"></circle>
             <foreignObject x="12.5" y="18" width="125" height="125"><div>Eunice clone</div></foreignObject>
+            <g class="explosion-container">
+              <g class="explosion">
+                <circle r="75" cx="75" cy="75"></circle>
+              </g>
+            </g>
           </g>
-          <g id="omom-clone" class="character" transform="translate(950, 625)">
+          <g id="omom-clone" class="character clone" transform="translate(950, 625)">
             <circle r="75" cx="75" cy="75"></circle>
             <foreignObject x="12.5" y="18" width="125" height="125"><div>Omom clone</div></foreignObject>
+            <g class="explosion-container">
+              <g class="explosion">
+                <circle r="75" cx="75" cy="75"></circle>
+              </g>
+            </g>
           </g>
           <g id="awnzo1" class="character" transform="translate(50, 350)">
             <circle r="75" cx="75" cy="75"></circle>
             <foreignObject x="12.5" y="12.5" width="125" height="125"><div>Awnzo 1</div></foreignObject>
           </g>
-          <g id="beffa-clone" class="character" transform="translate(50, 625)">
+          <g id="beffa-clone" class="character clone" transform="translate(50, 625)">
             <circle r="75" cx="75" cy="75"></circle>
             <foreignObject x="12.5" y="12.5" width="125" height="125"><div>Beffa clone</div></foreignObject>
+            <g class="explosion-container">
+              <g class="explosion">
+                <circle r="75" cx="75" cy="75"></circle>
+              </g>
+            </g>
           </g>
-          <g id="ken-clone" class="character" transform="translate(490, 800)">
+          <g id="ken-clone" class="character clone" transform="translate(490, 800)">
             <circle r="75" cx="75" cy="75"></circle>
             <foreignObject x="12.5" y="12.5" width="125" height="125"><div>Ken clone</div></foreignObject>
+            <g class="explosion-container">
+              <g class="explosion">
+                <circle r="75" cx="75" cy="75"></circle>
+              </g>
+            </g>
           </g>
-
         </g>
       </svg>
 

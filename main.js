@@ -1,52 +1,37 @@
 var nextButton = document.getElementById('next-button');
 var stage = 0;
+const radius = 75;
 
 var positionsForStages = {
-  '1': {
-    'mj-clone': 'translate(300, 250)',
-    'awnzo1-clone': 'translate(500, 250)',
-    'beffa': 'translate(700, 250)',
-    'eunice': 'translate(300, 450)',
-    'nettie': 'translate(500, 450)',
-    'omom': 'translate(700, 450)',
-    'mj': 'translate(75, 125)',
-    'nettie-clone': 'translate(975, 400)',
-    'eunice-clone': 'translate(975, 125)',
-    'omom-clone': 'translate(975, 675)',
-    'awnzo1': 'translate(75, 400)',
-    'beffa-clone': 'translate(75, 675)',
-    'ken': '600, 350',
-    'ken-clone': '490, 800'
-  },
-  '4': {
+  '5': {
     'mj': '50, 75',
     'mj-clone': '300, 250',
-    'awnzo1-clone': '50, 350',
     'awnzo1': '500, 225',
+    'awnzo1-clone': '50, 350',
     'beffa': '700, 225',
+    'beffa-clone': '50, 625',
     'eunice': '950, 75',
     'eunice-clone': '300, 450',
     'nettie': '950, 350',
     'nettie-clone': '500, 450',
     'omom': '700, 450',
     'omom-clone': '950, 625',
-    'beffa-clone': '50, 625',
   },
-  '6': {
-    'mj-clone': '50, 75',
+  '7': {
     'mj': '300, 250',
-    'awnzo1-clone': '50, 350',
+    'mj-clone': '50, 75',
     'awnzo1': '500, 225',
+    'awnzo1-clone': '50, 350',
     'beffa': '700, 225',
+    'beffa-clone': '50, 625',
     'eunice': '950, 75',
     'eunice-clone': '300, 450',
     'nettie': '950, 350',
     'nettie-clone': '500, 450',
-    'omom-clone': '700, 450',
     'omom': '950, 625',
-    'beffa-clone': '50, 625',
+    'omom-clone': '700, 450',
     'ken': '490, 800',
-    'ken-clone': '600, 350'
+    'ken-clone': '600, 350',
   },
 };
 
@@ -59,13 +44,19 @@ function onNextClick() {
   stage += 1;
   document.body.classList.add(`stage-${stage}`);
 
-  if (stage === 4 || stage === 6) {
-    animateShuffle(stage);
+  var transformsById = positionsForStages[stage];
+  if (transformsById) {
+    animateShuffle(transformsById);
+  }
+  if (stage === 8) {
+    let cloneGroups = document.querySelectorAll('.clone');
+    for (let i = 0; i < cloneGroups.length; ++i) {
+      explode(cloneGroups[i]);
+    }
   }
 }
 
-function animateShuffle(stage) {
-  var transformsById = positionsForStages[stage];
+function animateShuffle(transformsById) {
   for (let id in transformsById) {
     let animateNode = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform');
     let group = document.getElementById(id);
@@ -78,5 +69,41 @@ function animateShuffle(stage) {
     animateNode.setAttribute('fill', 'freeze');
     group.append(animateNode);
     animateNode.beginElement();
+    setTimeout(() => group.setAttribute('transform', `translate(${transformsById[id]})`), 5000);
   }
 }
+
+function explode(group) {
+  // var transform = group.getAttribute('transform');
+  // var center = /\((\d+),\s*(\d+)\)/.exec(transform).slice(1).map(s => +s + radius);
+  var center = [radius, radius];
+
+  let pathGroup = group.querySelector('.explosion');
+  
+  for (let i = 0; i < 50; ++i) {
+    let theta = Math.random() * 2 * Math.PI;
+    let theta2 = Math.random() * 2 * Math.PI;
+    let pathNode = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    if (Math.random * 2 < 1) {
+      pathNode.setAttribute('x1', center[0]);
+      pathNode.setAttribute('y1', center[1]);
+    } else {
+      pathNode.setAttribute('x1', center[0] + Math.cos(theta2) * radius);
+      pathNode.setAttribute('y1', center[1] + Math.sin(theta2) * radius);
+    }
+    pathNode.setAttribute('x2', center[0] + Math.cos(theta) * radius);
+    pathNode.setAttribute('y2', center[1] + Math.sin(theta) * radius);
+    pathNode.setAttribute('stroke', `hsl(${Math.random() * 50 + 10}, 100%, 60%)`);
+    pathGroup.append(pathNode);
+  }
+
+  // pathGroup.setAttribute('transform-origin', radius + ' ' + radius);
+  // pathGroup.setAttribute('transform', 'scale(0.1)');
+
+  // group.classList.add('exploding');
+  // setTimeout(() => {
+  //   group.classList.remove('exploding');
+    group.classList.add('exploded');
+  // },
+  //   2000);
+} 

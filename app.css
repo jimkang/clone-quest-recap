@@ -14,7 +14,7 @@
 body {
   font-size: 24px;
   font-family: goudy-bookletter, Georgia, serif;
-  background: #fff;
+  background: hsl(50, 15%, 90%);
   color: hsl(0, 30%, 20%);
   margin: 0;
   margin-bottom: 2rem;
@@ -72,6 +72,15 @@ a:visited {
   opacity: 1;
   width: 100%;
   height: 100%;
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-frame-caption > * {
+  width: 70%;
 }
 
 body:not(.stage-0) #intro {
@@ -89,7 +98,8 @@ body:not(.stage-2) #voted-off {
 }
 
 #ballot img {
-  height: 600px;
+  max-height: 600px;
+  object-fit: contain;
 }
 
 body:not(.stage-3) #ballot {
@@ -99,7 +109,21 @@ body:not(.stage-3) #ballot {
     1s visibility allow-discrete;
 }
 
-body:not(.stage-5) #pods {
+body:not(.stage-4) #tally {
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s ease-out opacity,
+    1s visibility allow-discrete;
+}
+
+body:not(.stage-6) #pods {
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s ease-out opacity,
+    1s visibility allow-discrete;
+}
+
+body:not(.stage-8) #time-out {
   visibility: hidden;
   opacity: 0;
   transition: 1s ease-out opacity,
@@ -108,7 +132,6 @@ body:not(.stage-5) #pods {
 
 .area .title {
   font-family: vast-shadow;
-  font-weight: 1000;
   font-size: 72px;
 }
 
@@ -131,10 +154,9 @@ body:not(.stage-5) #pods {
 }
 
 foreignObject div {
-  /* border: 2px solid purple; */
   display: flex;
   flex-direction: column;
-  align: center;
+  align-items: center;
   justify-content: center;
   text-align: center;
   font-size: 30px;
@@ -143,8 +165,60 @@ foreignObject div {
   height: 100%;
 }
 
+.clone line {
+  stroke-width: 8;
+}
+
+.exploded {
+}
+
+.explosion-container {
+  transform-origin: 75px 75px;
+  filter: url(#displacementFilter);
+  transform: scale(0.1);
+}
+
+.explosion {
+  transform-origin: 75px 75px;
+  visibility: hidden;
+  opacity: 0.9;
+}
+
+.exploded .explosion {
+  animation: 50s linear spin 2s infinite;
+  visibility: visible;
+}
+
+.exploded .explosion-container {
+  transform: scale(1);
+  transition: 2s linear transform;
+}
+
+.exploded .explosion circle {
+  fill: hsl(50, 100%, 50%);
+}
+
 @media all and (max-height: 568px) {
   body {
     font-size: 18px;
+  }
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes expand {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1.2);
   }
 }
