@@ -35,7 +35,10 @@ var positionsForStages = {
   },
 };
 
+var audio;
+
 ((function go() {
+  audio = new Audio('The-Entertainer-sting.mp3');
   nextButton.addEventListener('click', onNextClick);
 })());
 
@@ -46,9 +49,11 @@ function onNextClick() {
 
   var transformsById = positionsForStages[stage];
   if (transformsById) {
+    audio.play();
     animateShuffle(transformsById);
   }
-  if (stage === 8) {
+  if (stage === 9) {
+    audio.play();
     let cloneGroups = document.querySelectorAll('.clone');
     for (let i = 0; i < cloneGroups.length; ++i) {
       explode(cloneGroups[i]);
