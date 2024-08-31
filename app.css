@@ -130,6 +130,14 @@ body:not(.stage-8) #time-out {
     1s visibility allow-discrete;
 }
 
+
+body:not(.stage-10) #hells {
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s ease-out opacity,
+    1s visibility allow-discrete;
+}
+
 .area .title {
   font-family: vast-shadow;
   font-size: 72px;
